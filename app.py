@@ -15,8 +15,8 @@ if api_key:
     try:
         genai.configure(api_key=api_key)
         
-        # Alinhamento corrigido
-        model = genai.GenerativeModel('gemini-1.5-flash')
+        # AJUSTE DEFINITIVO: Usando o caminho completo sugerido
+        model = genai.GenerativeModel('models/gemini-1.5-flash-latest')
 
         uploaded_file = st.file_uploader("📸 Tire uma foto ou suba a imagem do Piso/Porcelanato", type=["jpg", "jpeg", "png"])
 
