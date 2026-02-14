@@ -16,8 +16,8 @@ if api_key:
         genai.configure(api_key=api_key)
         
         # AJUSTE AQUI: Tentando o modelo mais atualizado disponível
-        # O sistema testará o Gemini 1.5 Flash que é o padrão estável atual
-        model = genai.GenerativeModel('gemini-1.5-flash')
+        # O sistema testará o Gemini 3 Flash que é o padrão estável atual
+        model = genai.GenerativeModel('gemini-3-flash')
 
         uploaded_file = st.file_uploader("📸 Tire uma foto ou suba a imagem do Piso/Porcelanato", type=["jpg", "jpeg", "png"])
 
