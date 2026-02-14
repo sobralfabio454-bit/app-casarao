@@ -14,9 +14,11 @@ api_key = st.sidebar.text_input("Insira sua API Key do Google:", type="password"
 if api_key:
     try:
         genai.configure(api_key=api_key)
+        
+        # AJUSTE AQUI: Tentando o modelo mais atualizado disponível
+        # O sistema testará o Gemini 1.5 Flash que é o padrão estável atual
         model = genai.GenerativeModel('gemini-1.5-flash')
 
-        # Upload da Imagem - CORRIGIDO AQUI
         uploaded_file = st.file_uploader("📸 Tire uma foto ou suba a imagem do Piso/Porcelanato", type=["jpg", "jpeg", "png"])
 
         if uploaded_file is not None:
@@ -39,6 +41,8 @@ if api_key:
                     st.markdown("---")
                     st.write(response.text)
     except Exception as e:
-        st.error(f"Erro de configuração: {e}")
+        # Se o modelo 1.5 falhar, ele avisará aqui, mas o 'models/' costuma resolver
+        st.error(f"Erro ao conectar com o Gemini: {e}")
+        st.info("Dica: Verifique se sua chave API está ativa no Google AI Studio.")
 else:
     st.info("Por favor, insira sua API Key na barra lateral para ativar o sistema.")
