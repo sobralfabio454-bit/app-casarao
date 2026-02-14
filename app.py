@@ -15,8 +15,8 @@ if api_key:
     try:
         genai.configure(api_key=api_key)
         
-        # AJUSTE DEFINITIVO: Usando o caminho completo sugerido
-        model = genai.GenerativeModel('models/gemini-1.5-flash-latest')
+        # O código agora tenta o nome simplificado que a biblioteca nova exige
+        model = genai.GenerativeModel('gemini-1.5-flash')
 
         uploaded_file = st.file_uploader("📸 Tire uma foto ou suba a imagem do Piso/Porcelanato", type=["jpg", "jpeg", "png"])
 
@@ -26,14 +26,8 @@ if api_key:
             
             if st.button("✨ Gerar Conteúdo para Instagram"):
                 with st.spinner('Analisando o piso e criando o post...'):
-                    prompt = """
-                    Você é o especialista em marketing da loja Casarão da Construção. 
-                    Analise esta imagem de piso/porcelanato e:
-                    1. Descreva as características visuais (cor, brilho, estilo).
-                    2. Crie uma legenda persuasiva para o Instagram com título, benefícios e sugestão de ambiente.
-                    3. CTA: 'Visite o Casarão da Construção ou chame no direct!'
-                    4. Hashtags: #CasarãoDaConstrução #Reforma #Porcelanato
-                    """
+                    # Prompt focado na Casarão da Construção
+                    prompt = "Você é o especialista de marketing da Casarão da Construção. Analise esta foto de piso e crie um post de venda para Instagram com benefícios e hashtags."
                     
                     response = model.generate_content([prompt, image])
                     st.success("✅ Post Gerado!")
